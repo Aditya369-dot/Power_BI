@@ -1,4 +1,7 @@
 import streamlit as st
+import os
+import imageio
+
 
 st.set_page_config(layout="wide")
 
@@ -32,7 +35,79 @@ with col1:
         "**But we won’t stop there. The real magic happens when we introduce DAX (Data Analysis Expressions). These powerful formulas allow for deep dives and drill-downs into your data, uncovering trends and details that could easily be missed at first glance. Whether you're a seasoned Power BI user looking to refine your skills or a newcomer eager to make your mark in the e-commerce world, this tutorial is designed to equip you with the knowledge and tools you need to create a dashboard that not only meets but exceeds executive expectations.**")
 
     st.markdown(
-        "**Stay tuned as we embark on this journey, transforming raw data into a sleek, insightful dashboard that will propel your e-commerce platform to new heights.**")
+        "**Stay tuned as we embark on this journey, transforming raw data into a simple, insightful dashboard that will informative and functional.**")
+
+    st.markdown("""
+        <style>
+        .stVideo {
+            width: 10%;
+            height: 10%;
+        }
+        </style>
+        """, unsafe_allow_html=True)
+
+    st.video('C:/Users/adity/Videos/Screen Recorder/final.mp4')
+
+st.header(" 🛠️ STEP 1 ➡️ Connecting to a Data source by using Get data")
+with st.container():
+    col3 , col4 = st.columns([1,1])
+
+
+
+with col3:
+    st.write("")
+    st.info("Power BI stands out for its ability to connect effortlessly with a wide range of data sources, including CSV files, APIs,databases and much more. "
+        "It simplifies the process of turning raw data into insights through its integrated ETL (Extract, Transform, Load) capabilities."
+        " However, it's just one of many tools available. Each tool brings its own strengths, and the choice often depends on specific project needs, data types, and the technical comfort of the team. "
+        "By leveraging these tools wisely, you can ensure that your project benefits from a diverse set of data inputs, making your analyses richer and more comprehensive. "
+        "This approach opens up analytics to a wider audience, ensuring that your project can harness the full potential of data-driven insights.")
+
+    st.markdown(
+        "<span style='color: #FF4500;'>In my role, we leverage cloud connectors and <span style='color:#00008B;'>APIs for data integration, primarily with Oracle Fusion Cloud and Azure Cloud. For Human Capital Management (HCM) data, I generate XML files using HCM extracts. For data from other business units,"
+        " I connect to an Azure SQL database.</span> This approach highlights the importance of adaptability in managing data across different cloud platforms."
+        " But we will keep it simple. If you are following me, please download the CSV (Comma Separated Values) file</span>",
+        unsafe_allow_html=True)
+
+    file_path = "C:/Users/adity/OneDrive/Desktop/Power BI Course files/adventure works.zip"
+
+    # Check if the file exists
+    if os.path.exists(file_path):
+        # Open the file in binary read mode
+        with open(file_path, "rb") as file:
+            # Read the file's content
+            bytes_data = file.read()
+
+        # Create a download button and provide the file's content as bytes
+        st.write("Download here ⬇️ ")
+        st.download_button(
+            label="Download ZIP",
+            data=bytes_data,
+            file_name="adventure_works.zip",
+            mime="application/zip"
+        )
+    else:
+        st.error("File not found. Please check the file path.")
+
+
+with col4:
+    st.image("Screenshot (334).png", width= 700)
+
+
+st.header("🛠️ STEP 2 ➡️ We model the data and clean it, also creating some calculated fields")
+with st.container():
+    col5, emptycol, col6 = st.columns([1,0.5,1])
+
+with col5:
+    st.subheader("Description")
+    st.write("")
+
+
+with col6:
+    st.image("Screenshot model).png", width=700)
+
+
+
+
 
 
 
