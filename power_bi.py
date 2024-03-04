@@ -95,18 +95,68 @@ with col4:
 
 st.header("🛠️ STEP 2 ➡️ We model the data and clean it, also creating some calculated fields")
 with st.container():
-    col5, emptycol, col6 = st.columns([1,0.5,1])
+    col5, col6 = st.columns([1,1])
 
 with col5:
     st.subheader("Description")
+    st.info("Data modeling in Power BI is a critical process that involves structuring your data in a way that makes it"
+             " easy to create visuals, reports, and dashboards. "
+             "A well-designed data model allows for efficient data analysis "
+             "and helps uncover insights more effectively. "
+             "Here's a concise overview of key concepts in data modeling within Power BI.")
+    st.markdown("<span style='color: #FF4500;'> Creating an efficient data models but first understanding type of data stored in tables</span>",unsafe_allow_html=True)
+    st.markdown("<span style='color: #FF4500;'>👉 Building the Model:</span> In Power BI, after importing the data, you define relationships between tables, "
+        "typically connecting fact tables to related dimension tables through primary and foreign keys. "
+        "This setup enables analyzing facts in the context of the dimensions, like time, geography, or product characteristics."
+        , unsafe_allow_html=True)
+
     st.write("")
 
+    st.markdown(
+        "<span style='color: #FF4500;'>👉 Lookup Tables:</span> Lookup tables, or dimension tables, store descriptive information about the entities in the fact tables. "
+        "They help in providing context to the numeric metrics in the fact tables, such as product details, customer information, or time dimensions. "
+        "In Power BI, lookup tables are crucial for creating meaningful relationships and enabling rich data exploration."
+        , unsafe_allow_html=True)
 
+    st.write("")
+    st.markdown("<span style='color: #FF4500;'>👉 Facts and Events Tables:</span>Fact tables store quantitative data for analysis and reporting,"
+                " such as sales amount, transaction count, etc. Event tables, a type of fact table, specifically track events over time, "
+                "providing valuable insights into the temporal aspects of the data.",unsafe_allow_html=True )
+    st.write("")
+    st.markdown("<span style='color: #FF4500;'>👉 Joins :</span>Joins are used in Power BI to merge data from different sources based on common columns. "
+                "The main types of joins include Inner Join, Left Outer Join, Right Outer Join, and Full Outer Join, "
+                "each serving a unique purpose in combining data sets to enrich the model.",unsafe_allow_html=True)
+    st.write("")
+    st.markdown("<span style='color: #FF4500;'>👉 Flows and Snowflake Schema :</span>The downward flow in data modeling refers to the hierarchy of data from high-level summaries to more detailed data. "
+                "In Power BI, this allows users to drill down through layers of data in visualizations, "
+                "starting from a general overview down to more specific data points.The Snowflake Schema in Power BI is a data modeling technique where the data is organized in a way that resembles a snowflake. "
+                "It involves a central fact table linked to multiple dimension tables, which can also be linked to other dimension tables. "
+                "This schema is beneficial for complex data models, reducing data redundancy and improving query performance.",unsafe_allow_html=True)
 with col6:
-    st.image("Screenshot model).png", width=700)
+    st.image("Screenshot model).png", width=1200)
 
 
+options = ["Exec Dashboard", "Model and Calculated Fields", "Map", "Product Detail", "Customer Detail"]
 
+# Create radio buttons in a horizontal layout
+selected_option = st.radio("Choose an option:", options, horizontal=True)
+
+# Conditional block to show image and description based on selection
+if selected_option == "Exec Dashboard":
+    st.image("path_to_exec_dashboard_image.jpg")  # Replace with your image path or URL
+    st.write("Description for Exec Dashboard")
+elif selected_option == "Model and Calculated Fields":
+    st.image("path_to_model_and_calculated_fields_image.jpg")  # Replace with your image path or URL
+    st.write("Description for Model and Calculated Fields")
+elif selected_option == "Map":
+    st.image("path_to_map_image.jpg")  # Replace with your image path or URL
+    st.write("Description for Map")
+elif selected_option == "Product Detail":
+    st.image("path_to_product_detail_image.jpg")  # Replace with your image path or URL
+    st.write("Description for Product Detail")
+elif selected_option == "Customer Detail":
+    st.image("path_to_customer_detail_image.jpg")  # Replace with your image path or URL
+    st.write("Description for Customer Detail")
 
 
 
