@@ -2,12 +2,8 @@ import streamlit as st
 import os
 import imageio
 
-
 st.set_page_config(layout="wide")
-
 st.sidebar.info("lets Connect")
-
-
 
 st.sidebar.markdown("""
 [![GitHub](https://img.icons8.com/ios-glyphs/45/FFFFFF/github.png)](https://github.com/Aditya369-dot)
@@ -15,6 +11,7 @@ st.sidebar.markdown("""
 [![Twitter](https://img.icons8.com/ios-glyphs/40/FFFFFF/twitter.png)](https://twitter.com/adibholla21)
 [![Instagram](https://img.icons8.com/ios-glyphs/45/FFFFFF/instagram-new.png)](https://www.instagram.com/aditya_4real/?next=%2Foauth%2Foidc%2F%3Fapp_id%3D1289884158313322%26scope%3Dopenid%26response_type%3Dcode%26state%3DATB3TBXUaFJLKVN4dV5PYrDMQbVb4gYfCo_NtC7hKYeXi_xGSJiosSqUdnYymaMoKJCIQ-uoXpCCDDfHA95spC5vL_FHjyYUfkdMmj9igbQgB-ULu0BNLWW_VlXz7cGbGkSqtdg-Hl5PNAFvQ3Q4T4KkG1A%26redirect_uri%3Dhttps%3A%2F%2Fwww.threads.net%2Flogin%2Foidc%2F%26logger_id%3D31423f7a-6b01-4808-91a7-32c2a0b89ead)
 """,unsafe_allow_html=True)
+
 
 filepath = "Power_bi_resume.pdf"
 
@@ -24,6 +21,24 @@ with open(filepath,"rb") as file:
         data=file,
         mime="application/pdf"
     )
+
+file_path = "C:/Users/adity/OneDrive/Desktop/Power BI Course files/adventure works.zip"
+if os.path.exists(file_path):
+    # Open the file in binary read mode
+    with open(file_path, "rb") as file:
+        # Read the file's content
+        bytes_data = file.read()
+
+    # Create a download button and provide the file's content as bytes
+    st.sidebar.info("Download CSV to follow along ⬇️ ")
+    st.sidebar.download_button(
+        label="Download CSV Zip",
+        data=bytes_data,
+        file_name="adventure_works.zip",
+        mime="application/zip"
+    )
+else:
+    st.error("File not found. Please check the file path.")
 
 def gradient(color1, color2, color3):
     st.markdown(f'<h1 style="text-align:center;background-image: linear-gradient(to right,{color1}, {color2});font-size:40x;border-radius:3%".'
@@ -36,7 +51,7 @@ with st.container():
 with col1:
     gradient("#32CD32", "#00FF00", "#FFFF")
     st.header("")
-    import streamlit as st
+
 
     st.markdown(
         "**In the fast-paced world of e-commerce, data is king. It informs every decision, from marketing strategies to inventory management, and in the digital age, the ability to quickly interpret and act on this data sets successful businesses apart. This is where our step-by-step tutorial comes into play, guiding you through the process of building an executive dashboard for your e-commerce platform using Microsoft Power BI.**")
@@ -53,7 +68,7 @@ with col1:
     st.markdown("""
         <style>
         .stVideo {
-            width: 10%;
+            width: 5%;
             height: 10%;
         }
         </style>
@@ -61,122 +76,237 @@ with col1:
 
     st.video('C:/Users/adity/Videos/Screen Recorder/final.mp4')
 
-st.header(" 🛠️ STEP 1 ➡️ Connecting to a Data source by using Get data")
-with st.container():
-    col3 , col4 = st.columns([1,1])
-
-
-
-with col3:
-    st.write("")
-    st.info("Power BI stands out for its ability to connect effortlessly with a wide range of data sources, including CSV files, APIs,databases and much more. "
+st.header("🛠️➡️ Understanding the Architecture of Power BI and Fabric with Power Apps and Azure")
+st.info("Power BI stands out for its ability to connect effortlessly with a wide range of data sources, including CSV files, APIs,databases and much more. "
         "It simplifies the process of turning raw data into insights through its integrated ETL (Extract, Transform, Load) capabilities."
         " However, it's just one of many tools available. Each tool brings its own strengths, and the choice often depends on specific project needs, data types, and the technical comfort of the team. "
         "By leveraging these tools wisely, you can ensure that your project benefits from a diverse set of data inputs, making your analyses richer and more comprehensive. "
         "This approach opens up analytics to a wider audience, ensuring that your project can harness the full potential of data-driven insights.")
-
-    st.markdown(
-        "<span style='color: #FF4500;'>In my role, we leverage cloud connectors and <span style='color:#00008B;'>APIs for data integration, primarily with Oracle Fusion Cloud and Azure Cloud. For Human Capital Management (HCM) data, I generate XML files using HCM extracts. For data from other business units,"
-        " I connect to an Azure SQL database.</span> This approach highlights the importance of adaptability in managing data across different cloud platforms."
-        " But we will keep it simple. If you are following me, please download the CSV (Comma Separated Values) file</span>",
-        unsafe_allow_html=True)
-
-    file_path = "C:/Users/adity/OneDrive/Desktop/Power BI Course files/adventure works.zip"
-
-    # Check if the file exists
-    if os.path.exists(file_path):
-        # Open the file in binary read mode
-        with open(file_path, "rb") as file:
-            # Read the file's content
-            bytes_data = file.read()
-
-        # Create a download button and provide the file's content as bytes
-        st.write("Download here ⬇️ ")
-        st.download_button(
-            label="Download ZIP",
-            data=bytes_data,
-            file_name="adventure_works.zip",
-            mime="application/zip"
-        )
-    else:
-        st.error("File not found. Please check the file path.")
+st.image("images/architecture.png")
 
 
-with col4:
-    st.image("Screenshot (334).png", width= 700)
 
 
-st.header("🛠️ STEP 2 ➡️ We model the data and clean it, also creating some calculated fields")
-with st.container():
-    col5, col6 = st.columns([1,1])
-
-with col5:
-    st.subheader("Description")
-    st.info("Data modeling in Power BI is a critical process that involves structuring your data in a way that makes it"
-             " easy to create visuals, reports, and dashboards. "
-             "A well-designed data model allows for efficient data analysis "
-             "and helps uncover insights more effectively. "
-             "Here's a concise overview of key concepts in data modeling within Power BI.")
-    st.markdown("<span style='color: #FF4500;'> Creating an efficient data models but first understanding type of data stored in tables</span>",unsafe_allow_html=True)
-    st.markdown("<span style='color: #FF4500;'>👉 Building the Model:</span> In Power BI, after importing the data, you define relationships between tables, "
-        "typically connecting fact tables to related dimension tables through primary and foreign keys. "
-        "This setup enables analyzing facts in the context of the dimensions, like time, geography, or product characteristics."
-        , unsafe_allow_html=True)
-
-    st.write("")
-
-    st.markdown(
-        "<span style='color: #FF4500;'>👉 Lookup Tables:</span> Lookup tables, or dimension tables, store descriptive information about the entities in the fact tables. "
-        "They help in providing context to the numeric metrics in the fact tables, such as product details, customer information, or time dimensions. "
-        "In Power BI, lookup tables are crucial for creating meaningful relationships and enabling rich data exploration."
-        , unsafe_allow_html=True)
-
-    st.write("")
-    st.markdown("<span style='color: #FF4500;'>👉 Facts and Events Tables:</span>Fact tables store quantitative data for analysis and reporting,"
-                " such as sales amount, transaction count, etc. Event tables, a type of fact table, specifically track events over time, "
-                "providing valuable insights into the temporal aspects of the data.",unsafe_allow_html=True )
-    st.write("")
-    st.markdown("<span style='color: #FF4500;'>👉 Joins :</span>Joins are used in Power BI to merge data from different sources based on common columns. "
-                "The main types of joins include Inner Join, Left Outer Join, Right Outer Join, and Full Outer Join, "
-                "each serving a unique purpose in combining data sets to enrich the model.",unsafe_allow_html=True)
-    st.write("")
-    st.markdown("<span style='color: #FF4500;'>👉 Flows and Snowflake Schema :</span>The downward flow in data modeling refers to the hierarchy of data from high-level summaries to more detailed data. "
-                "In Power BI, this allows users to drill down through layers of data in visualizations, "
-                "starting from a general overview down to more specific data points.The Snowflake Schema in Power BI is a data modeling technique where the data is organized in a way that resembles a snowflake. "
-                "It involves a central fact table linked to multiple dimension tables, which can also be linked to other dimension tables. "
-                "This schema is beneficial for complex data models, reducing data redundancy and improving query performance.",unsafe_allow_html=True)
-with col6:
-    st.image("Screenshot model).png", width=1200)
-
-
-st.header("🛠️ STEP 1 ➡️ Understanding each Analysis on the Dashboard individually for a better understanding ")
+st.header("🛠️➡️ Understanding each Analysis on the Dashboard individually for a better understanding ")
 st.subheader("Choose options below to select one analysis and learn more about it")
 
-options = ["Exec Dashboard", "Model and Calculated Fields",  "Map", "Product Detail", "Customer Detail", "DAX integrations for Drill-downs"]
+options = ["Exec Dashboard", "Map", "Product Detail", "Customer Detail","Data Model and Table View", "DAX integrations for Drill-downs"]
 
 # Create radio buttons in a horizontal layout
 selected_option = st.radio("Choose an option:", options, horizontal=True)
 
 # Conditional block to show image and description based on selection
+
 if selected_option == "Exec Dashboard":
-    st.image("path_to_exec_dashboard_image.jpg")  # Replace with your image path or URL
-    st.write("Description for Exec Dashboard")
-elif selected_option == "Model and Calculated Fields":
-    st.image("path_to_model_and_calculated_fields_image.jpg")  # Replace with your image path or URL
-    st.write("Description for Model and Calculated Fields")
+        st.write("Description for Exec Dashboard")
+        st.image("images/20240304175209-ezgif.com-video-to-gif-converter.gif", width=800)  # Replace with your image path or URL
+        st.title('Executive Dashboard Analysis')
+
+        st.markdown("""
+        <style>
+        .neon-orange { color: #FFA07A; } /* Adjust the color code for neon orange */
+        .neon-green { color: #7FFF00; } /* Adjust the color code for neon green */
+        .neon-blue { color: #00FFFF; } /* Adjust the color code for neon blue */
+        .neon-pink { color: #FF69B4; } /* Adjust the color code for neon pink */
+        </style>
+
+        Upon analyzing the <span class='neon-orange'>**Adventure Works Cycles Executive Dashboard**</span>, we uncover a comprehensive snapshot of the company's performance in the cycling equipment market.
+
+        #### <span class='neon-green'>Core Financial Indicators:</span>
+        - <span class='neon-blue'>**Total Revenue ($24.9M)**</span>: This key figure is a testament to the company's strong market presence and effective sales strategies.
+        - <span class='neon-blue'>**Total Profit ($10.5M)**</span>: A reflection of operational efficiency, this number highlights the company's ability to convert revenue into actual profit.
+        - <span class='neon-blue'>**Total Orders (25.2K)**</span>: Indicative of customer demand and sales effectiveness, the volume of orders processed is a vital metric for operational scalability.
+        - <span class='neon-blue'>**Return Rate (2.2%)**</span>: This metric warrants attention as it affects customer trust and impacts net revenue. A low rate is indicative of high product quality and customer satisfaction.
+
+        #### <span class='neon-green'>Trend Analysis and Forecasting:</span>
+        - The line graph detailing <span class='neon-pink'>**Revenue Trending**</span> allows us to identify temporal patterns, market responses to campaigns, and potentially, to forecast future revenue through its predictive dotted line.
+
+        #### <span class='neon-green'>Monthly Business Health Check:</span>
+        - <span class='neon-blue'>**Monthly Revenue ($1.83M)**</span>: Observed against the backdrop of previous performance, this provides a near real-time health check of the business's earning capacity.
+        - <span class='neon-blue'>**Monthly Orders (2146)**</span>: A crucial indicator of market penetration and customer acquisition efforts.
+        - <span class='neon-blue'>**Monthly Returns (166)**</span>: Monitoring this figure closely can inform product quality and customer service policies.
+
+        #### <span class='neon-green'>Product Performance Deep Dive:</span>
+        - The <span class='neon-pink'>**Orders by Category**</span> bar chart dissects the order volume into categories such as Accessories, Bikes, and Clothing, allowing for targeted analysis of product lines.
+
+        #### <span class='neon-green'>Sales and Return Metrics:</span>
+        - <span class='neon-blue'>**Top 10 performers**</span>: This table offers strategic insights into product strengths and informs inventory and marketing focus.
+        - <span class='neon-blue'>**Most Ordered Product**</span>: This quick glance metric indicates market preference and product success.
+        - <span class='neon-blue'>**Most Returned Product**</span>: An essential alert to potential issues in product or service quality that could be detrimental to the brand's reputation.
+
+        The dashboard's design effectively incorporates visual aids and comparative analysis to empower executives with actionable insights, ensuring that strategic decisions are data-driven and timely.
+
+        In summary, the <span class='neon-orange'>**Adventure Works Cycles Executive Dashboard**</span> is a strategic tool that not only provides a holistic view of the company’s current market standing but also serves as a compass for future business direction.
+        """, unsafe_allow_html=True)
+
+
+
+
 elif selected_option == "Map":
-    st.image("path_to_map_image.jpg")  # Replace with your image path or URL
-    st.write("Description for Map")
+        st.image("images/20240304175313-ezgif.com-video-to-gif-converter.gif",width=900)  # Replace with your image path or URL
+        st.title("Interactive Bubble Map")
+        st.markdown("""
+            <style>
+            .neonHeading {color: #D39FFC;}  /* Neon Purple */
+            .neonText {color: #FF4500;} /* Neon Orange */
+            .neonHighlight {color: #39FF14;} /* Neon Green */
+            .neonSubText {color: #00FFFF;} /* Neon Blue */
+            </style>
+
+            <span class='neonHeading'>Interactive Map Visualization Analysis in Power BI</span><br><br>
+
+            <span class='neonText'>The Power BI dashboard presents an interactive map visualization that is pivotal for geospatial analysis. The displayed map highlights total orders by country with proportional bubble sizes that intuitively indicate order volumes. Through this visualization:</span><br>
+
+            - <span class='neonHighlight'>Regions:</span> Different continents such as Europe, North America, and the Pacific are clearly demarcated, offering insights into regional market distribution.<br>
+            - <span class='neonHighlight'>Bubbles:</span> The varying sizes of the bubbles provide an immediate visual cue to the user about the volume of orders from different countries, enabling quick comparative analysis.<br>
+            - <span class='neonHighlight'>Interactivity:</span> Users can interact with the visualization to drill down into specific countries or regions, facilitating a deeper understanding of localized trends.<br>
+            - <span class='neonHighlight'>Filtering:</span> The map includes a filtering feature, allowing stakeholders to view data for selected regions, aiding in targeted analysis and decision-making.<br><br>
+
+            <span class='neonSubText'>Types of Maps in Power BI:</span><br>
+            Power BI offers a variety of map visualizations to cater to different analytical needs:<br>
+            - <span class='neonSubText'>Bubble Map:</span> Ideal for emphasizing points of interest with size-based indicators.<br>
+            - <span class='neonSubText'>Filled Map:</span> Excellent for demographic and density distribution analysis through color-coded regions.<br>
+            - <span class='neonSubText'>Shape Map:</span> Suited for custom layouts and non-geographical shapes.<br>
+            - <span class='neonSubText'>ArcGIS Maps:</span> Advanced geographic analysis with enhanced features like heat maps, drive times, and clustering.<br><br>
+
+            <span class='neonText'>In summary, the map visualization in Power BI shown in the image provides a strategic overview of global operations, enabling businesses to pinpoint areas of high performance and identify regions that may require additional attention or resources.</span>
+            """, unsafe_allow_html=True)
+
 elif selected_option == "Product Detail":
-    st.image("path_to_product_detail_image.jpg")  # Replace with your image path or URL
-    st.write("Description for Product Detail")
+    st.image("images/20240304175401-ezgif.com-video-to-gif-converter.gif",width=900)  # Replace with your image path or URL
+    st.title("Analyzing Individual Product Performance With Product Detail View ")
+    st.markdown("""
+        <style>
+        .neonHeading {color: #39FF14;} /* Neon Green */
+        .whiteText {color: #FFFFFF;} /* White */
+        </style>
+
+        <span class='neonHeading'>In-Depth Analysis of the Product Detail Dashboard</span><br><br>
+
+        <span class='whiteText'>The dashboard we're examining goes beyond basic reporting to provide a rich, data-driven story about the 'All-Purpose Bike Stand'. By leveraging a suite of interactive visualizations and filters, it grants comprehensive insights into the product's performance.</span><br><br>
+
+        <span class='neonHeading'>Monthly Orders vs. Order Target Gauge</span><br>
+        <span class='whiteText'>
+        The gauge is an intuitive tool for tracking sales efficiency. By showing the actual orders as a proportion of the target, it quickly communicates whether sales initiatives are hitting their mark. This can be particularly helpful in sales meetings to visually underscore areas needing attention and to prompt discussion around tactics for improvement.
+        </span><br><br>
+
+        <span class='neonHeading'>Profit Analysis Line Chart</span><br>
+        <span class='whiteText'>
+        Profitability is a vital sign of a product's success. The line chart traces profit over time, revealing the financial journey of the product. It’s critical for spotting trends, such as an increase in profit following a marketing campaign or a decrease that might correlate with external market pressures. By placing actual and adjusted profits side by side, the chart guides managers in evaluating the effectiveness of their pricing strategies and cost control measures.
+        </span><br><br>
+
+        <span class='neonHeading'>Revenue Targets Bar Chart</span><br>
+        <span class='whiteText'>
+        This bar chart is crucial for assessing how well the product is doing against revenue goals. It helps in understanding if the product is a strong contributor to the company's bottom line or if there are market challenges that need to be addressed. A consistent shortfall against targets might indicate the need for a product refresh or a pivot in strategy.
+        </span><br><br>
+
+        <span class='neonHeading'>Trend Analysis and Metric Selection</span><br>
+        <span class='whiteText'>
+        The trend analysis section dives into the selected product's sales, returns, and revenue over time. This multi-metric approach allows for a balanced view of success and areas for improvement. For example, a high return rate might point to quality issues, while fluctuating sales could indicate seasonal demand or supply chain challenges.
+        </span><br><br>
+
+        <span class='neonHeading'>Discount Filter Impact</span><br>
+        <span class='whiteText'>
+        The discount filter is a powerful feature that simulates how price adjustments could affect sales volume and profitability. It’s an excellent tool for understanding the price sensitivity of the product and can guide pricing strategies to optimize for market competitiveness and profitability. Analyzing how discounts impact total revenue and profit can inform promotional campaigns and discount limits.
+        </span><br><br>
+
+        <span class='whiteText'>
+        Overall, this dashboard exemplifies the use of Power BI for strategic analysis. The interactive components encourage active exploration of the data, fostering a deeper understanding of the product’s market behavior. Such insights are invaluable for crafting strategies that capitalize on strengths and address weaknesses, thereby driving business growth.
+        </span>
+        """, unsafe_allow_html=True)
+
+
+
+
+
 elif selected_option == "Customer Detail":
-    st.image("path_to_customer_detail_image.jpg")  # Replace with your image path or URL
-    st.write("Description for Customer Detail")
+    st.image("images/20240304175439-ezgif.com-video-to-gif-converter.gif",width=900)  # Replace with your image path or URL
+    st.title("Analyzing Our Customers Through Customer Detail")
+
+elif selected_option == "Data Model and Table View":
+    colm, colt = st.columns([1,1])
+    with colm:
+        st.image("images/20240305151416-ezgif.com-video-to-gif-converter.gif",width=800)
+    with colt:
+        st.image("images/20240305151604-ezgif.com-video-to-gif-converter.gif",width=800)
+    st.subheader("➡️ Understanding modelling with Model view and Table view")
+    st.info("Data modeling in Power BI is a critical process that involves structuring your data in a way that makes it"
+            " easy to create visuals, reports, and dashboards. "
+            "A well-designed data model allows for efficient data analysis "
+            "and helps uncover insights more effectively. "
+            "Here's a concise overview of key concepts in data modeling within Power BI.")
+    st.markdown("""
+        <style>
+        .neonHeading {color: #FF4500;}  /* Neon Orange */
+        .neonSubHeading {color: #39FF14;} /* Neon Green */
+        .neonHighlight {color: #00FFFF;} /* Neon Blue */
+        </style>
+
+        <span class='neonHeading'>Creating efficient data models requires first understanding the type of data stored in tables.</span><br><br>
+
+        <span class='neonSubHeading'>👉 Building the Model:</span>
+        <span class='neonHighlight'>In Power BI, after importing the data, you define relationships between tables,</span>
+        typically connecting fact tables to related dimension tables through primary and foreign keys.
+        This setup enables analyzing facts in the context of the dimensions, like time, geography, or product characteristics.<br><br>
+
+        <span class='neonSubHeading'>👉 Lookup Tables:</span>
+        <span class='neonHighlight'>Lookup tables, or dimension tables, store descriptive information about the entities in the fact tables.</span>
+        They help in providing context to the numeric metrics in the fact tables, such as product details, customer information, or time dimensions.
+        In Power BI, lookup tables are crucial for creating meaningful relationships and enabling rich data exploration.<br><br>
+
+        <span class='neonSubHeading'>👉 Facts and Events Tables:</span>
+        <span class='neonHighlight'>Fact tables store quantitative data for analysis and reporting,</span>
+        such as sales amount, transaction count, etc. Event tables, a type of fact table, specifically track events over time,
+        providing valuable insights into the temporal aspects of the data.<br><br>
+
+        <span class='neonSubHeading'>👉 Joins:</span>
+        <span class='neonHighlight'>Joins are used in Power BI to merge data from different sources based on common columns.</span>
+        The main types of joins include Inner Join, Left Outer Join, Right Outer Join, and Full Outer Join,
+        each serving a unique purpose in combining data sets to enrich the model.<br><br>
+
+        <span class='neonSubHeading'>👉 Flows and Snowflake Schema:</span>
+        <span class='neonHighlight'>The downward flow in data modeling refers to the hierarchy of data from high-level summaries to more detailed data.</span>
+        In Power BI, this allows users to drill down through layers of data in visualizations,
+        starting from a general overview down to more specific data points. The Snowflake Schema in Power BI is a data modeling technique where the data is organized in a way that resembles a snowflake.
+        It involves a central fact table linked to multiple dimension tables, which can also be linked to other dimension tables.
+        This schema is beneficial for complex data models, reducing data redundancy and improving query performance.
+        """, unsafe_allow_html=True)
+
+
 elif selected_option == "DAX integrations for Drill-downs":
-    st.image("")
-    st.write("")
+    coldax, colinfo = st.columns([1 ,1])
+    with coldax:
+        st.image("images/20240305151812-ezgif.com-video-to-gif-converter.gif", width= 700)
+    with colinfo:
+       st.image("images/new.gif",width=700)
+    st.title("Implicit Measures vs Explicit Measures")
+    st.markdown("<span style='color: #FF4500;'> Implicit Measures </span> are automatically created by the software when a field is added to a report. They apply default aggregations like sum or count without the need for a user-defined formula." +
+                    "<span style='color: #FF4500;'> Explicit Measures </span> are custom calculations created by the user using DAX formulas. These allow for more complex and precise data analysis.",unsafe_allow_html=True)
+    st.markdown("<span style='color: #FF4500;'>Key Differences</span>",unsafe_allow_html=True)
+    st.markdown(
+            "<span style='color: #FF4500;'>Creation:</span> Implicit measures are auto-generated; explicit measures are user-defined.<br>" +
+            "<span style='color: #FF4500;'>Flexibility:</span> Explicit measures offer greater flexibility and complexity.<br>" +
+            "<span style='color: #FF4500;'>Performance:</span> Explicit measures can be optimized for better performance.<br>" +
+            "<span style='color: #FF4500;'>Reusability:</span> Explicit measures can be reused across reports, ensuring consistency.",unsafe_allow_html=True)
+    st.title("Using Implicit measures in Visualizations")
+    st.markdown(
+        "Implicit measures in Power BI are created automatically when you drag and drop fields into visualizations. These measures are typically straightforward aggregations of your data.<br><br>" +
 
+        "<span style='color: #FF4500;'>Total Sales:</span> The sum of all sales transactions. This measure is automatically calculated when you drag the sales amount field into a visualization, summing up the total sales revenue.<br>" +
 
+        "<span style='color: #FF4500;'>Total Orders:</span> The count of all orders. By dragging the order ID field into a visualization, Power BI can count the total number of orders placed within the selected timeframe.<br>" +
 
+        "<span style='color: #FF4500;'>Average Order Value (AOV):</span> The average value of sales transactions. When you drag the sales amount field into a visualization and set the aggregation to average, Power BI calculates the AOV.",
+        unsafe_allow_html=True)
+
+    st.title("Using Explicit Measures in Visualization")
+    st.markdown("Explicit measures are created using DAX to define complex calculations. They offer flexibility and precision, tailored to specific analytical needs.",
+            unsafe_allow_html=True)
+    st.info("CLV = SUMX(Customers, [Total Sales] * [Profit Margin] * [Retention Rate])")
+    st.write("This measure calculates the predicted net profit attributed to the entire future relationship with a customer. It considers total sales, profit margin, and retention rate for each customer.")
+    st.info("YoY Sales Growth = (CALCULATE([Total Sales], SAMEPERIODLASTYEAR('Calendar'[Date])) - [Total Sales]) / CALCULATE([Total Sales], SAMEPERIODLASTYEAR('Calendar'[Date]))")
+    st.write("This measure calculates the growth in sales compared to the same period in the previous year, giving insight into the business's growth trajectory.")
+    st.info("TenDayRollingAverageSales = CALCULATE(AVERAGE(Sales[TotalSales]),DATESINPERIOD(Sales[SalesDate], LASTDATE(Sales[SalesDate]), -10, DAY))")
+    st.write("This calculates the average total sales (AVERAGE(Sales[TotalSales])) over a rolling period of 10 days ending with the last date in Sales[SalesDate]. The period is dynamically calculated for each row in the data, making it a 'rolling' or 'moving'' average.")
+    st.write("In brief, explicit measures provide more control and versatility for complex data analysis, whereas implicit measures are suitable for quick, straightforward aggregations.")
 
