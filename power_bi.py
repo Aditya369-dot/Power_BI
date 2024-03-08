@@ -2,7 +2,7 @@ import streamlit as st
 import os
 
 
-st.set_page_config(layout="wide")
+st.set_page_config(layout="wide",initial_sidebar_state="auto")
 st.sidebar.info("lets Connect")
 
 st.sidebar.markdown("""
@@ -22,7 +22,7 @@ with open(filepath,"rb") as file:
         mime="application/pdf"
     )
 
-file_path = "C:/Users/adity/OneDrive/Desktop/Power BI Course files/adventure works.zip"
+file_path = "datafiles"
 if os.path.exists(file_path):
     # Open the file in binary read mode
     with open(file_path, "rb") as file:
@@ -81,7 +81,7 @@ with col1:
         </style>
         """, unsafe_allow_html=True)
 
-    st.video('final.mp4')
+    st.video('images/final.mp4')
 
 st.header("🛠️➡️ Understanding the Architecture of Power BI and Fabric with Power Apps and Azure")
 st.info("Power BI stands out for its ability to connect effortlessly with a wide range of data sources, including CSV files, APIs,databases and much more. "
