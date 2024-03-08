@@ -40,6 +40,13 @@ if os.path.exists(file_path):
 else:
     st.error("File not found. Please check the file path.")
 
+
+st.sidebar.info("Learn DAX in detail from Microsoft itself ⬇️ ")
+st.sidebar.link_button(
+    label="Link to DAX",
+    url="https://learn.microsoft.com/en-us/dax/dax-overview"
+)
+
 def gradient(color1, color2, color3):
     st.markdown(f'<h1 style="text-align:center;background-image: linear-gradient(to right,{color1}, {color2});font-size:40x;border-radius:3%".'
                 f'<span style="color:{color3};">Creating Simple and Powerful Power BI Dashboard using E-commerce data</span><br>',unsafe_allow_html=True)
@@ -49,21 +56,21 @@ with st.container():
     col1,col2 = st.columns([4,0.5])
 
 with col1:
-    gradient("#32CD32", "#00FF00", "#FFFF")
+    gradient("#808000", "#FFD700", "#FFDAB9")
+
     st.header("")
 
+    st.markdown("""
+    In a project designed to harness the power of e-commerce analytics, I have leveraged Microsoft Power BI to construct an executive dashboard that synthesizes complexity into clarity. This dashboard was built upon a rich dataset from Kaggle, meticulously molded to create a dynamic and informative narrative of the e-commerce business landscape.
 
-    st.markdown(
-        "**In the fast-paced world of e-commerce, data is king. It informs every decision, from marketing strategies to inventory management, and in the digital age, the ability to quickly interpret and act on this data sets successful businesses apart. This is where our step-by-step tutorial comes into play, guiding you through the process of building an executive dashboard for your e-commerce platform using Microsoft Power BI.**")
+    My approach was methodical: I began by sculpting a robust data model that set the stage for insightful analytics. The focus was on creating a storytelling flow within the dashboard that guides the viewer through different facets of business performance, from sales to customer engagement.
 
-    st.markdown(
-        "**Our journey will begin with the basics of acquiring data, specifically focusing on datasets available through Kaggle—a treasure trove of information ready to be harnessed. From there, we'll dive into the creation of dynamic data models and flows, ensuring your dashboard not only presents data but tells a story. The art of creating sensible and impactful visuals will be our next focus, turning numbers and figures into insights at a glance.**")
+    Visualizations played a crucial role; each chart and graph was strategically placed to offer immediate business insights at a glance. From gauging customer order trends across income levels to tracking average revenue per customer, the dashboard transformed data points into actionable intelligence.
 
-    st.markdown(
-        "**But we won’t stop there. The real magic happens when we introduce DAX (Data Analysis Expressions). These powerful formulas allow for deep dives and drill-downs into your data, uncovering trends and details that could easily be missed at first glance. Whether you're a seasoned Power BI user looking to refine your skills or a newcomer eager to make your mark in the e-commerce world, this tutorial is designed to equip you with the knowledge and tools you need to create a dashboard that not only meets but exceeds executive expectations.**")
+    With DAX expressions at my disposal, I added a layer of depth, enabling the dashboard to not only display static data but also to offer interactive exploration. The result was a compelling, user-friendly dashboard that distills vast amounts of data into understandable metrics that drive strategic business decisions.
 
-    st.markdown(
-        "**Stay tuned as we embark on this journey, transforming raw data into a simple, insightful dashboard that will informative and functional.**")
+    This project epitomizes the transformative potential of data visualization in Power BI, turning raw data into a streamlined, efficient dashboard poised to elevate any e-commerce platform's analytical capabilities.
+    """, unsafe_allow_html=False)
 
     st.markdown("""
         <style>
@@ -221,7 +228,47 @@ elif selected_option == "Product Detail":
 
 elif selected_option == "Customer Detail":
     st.image("images/20240304175439-ezgif.com-video-to-gif-converter.gif",width=900)  # Replace with your image path or URL
-    st.title("Analyzing Our Customers Through Customer Detail")
+    st.title("Analyzing Our Customers Through Customer Detail Dashboard")
+    st.markdown("""
+        <style>
+        .neonHeading {color: #39FF14;} /* Neon Green */
+        .whiteText {color: #FFFFFF;} /* White */
+        .neonBlue {color: #00FFFF;} /* Neon Blue */
+        </style>
+
+        <span class='neonHeading'>In-Depth Analysis and Key Findings from Customer Detail Dashboard</span><br><br>
+
+        <span class='whiteText'>
+        The customer detail dashboard is a treasure trove of insights, crafted with a range of visual elements that provide both an overarching and granular perspective on customer engagement and sales metrics.
+
+        <span class='neonHeading'>Key Metrics and Their Implications</span><br>
+        - The <span class='neonBlue'>Average Revenue Per Customer</span> at the top-left is a pivotal gauge of the value that each customer brings to the company. A robust average suggests that customer acquisition and upselling strategies are bearing fruit.
+        - The <span class='neonBlue'>Unique Customer Orders</span> counter reflects the company's market reach and is indicative of its ability to attract and retain customers, which is essential for long-term viability.
+
+        <span class='neonHeading'>Segmentation Analysis</span><br>
+        - The <span class='neonBlue'>Income Level Distribution Donut Chart</span> showcases the variety within the customer base. A sizeable high-income segment could indicate success in capturing the premium market segment.
+        - The <span class='neonBlue'>Occupation by Customer Donut Chart</span> provides valuable insights into the customers' professional backgrounds, information that can drive targeted product development and marketing strategies.
+
+        <span class='neonHeading'>Revenue Trends and Patterns</span><br>
+        - The <span class='neonBlue'>Revenue Trend Line Chart</span> reveals the revenue fluctuations over time, which can help identify the effects of seasonal trends or the impact of promotional activities.
+
+        <span class='neonHeading'>Customer Revenue Contributions</span><br>
+        - The <span class='neonBlue'>Customer Revenue Table</span> effectively pinpoints the customers who are significant revenue drivers and may be suitable for focused relationship-building initiatives like loyalty programs.
+
+        <span class='neonHeading'>Customer Spotlight</span><br>
+        - The <span class='neonBlue'>Featured Customer Card</span> highlights individual customer contributions, demonstrating the high lifetime value of certain customers and emphasizing the importance of personalized customer engagement strategies.
+
+        <span class='neonHeading'>Overall Findings</span><br>
+        The analysis of the dashboard reveals:
+        - The diversified customer base regarding income and occupation hints at a broad appeal of the company's offerings.
+        - There appears to be a substantial opportunity to augment customer retention strategies, particularly for those who are pivotal to the company's revenue stream.
+        - A closer look at sales trends might uncover strategic periods for optimizing marketing initiatives and sales operations.
+
+        In sum, this dashboard acts as a critical strategic asset for guiding future business directions and fostering an environment of informed decision-making practices.
+        </span>
+        """, unsafe_allow_html=True)
+
+
 
 elif selected_option == "Data Model and Table View":
     colm, colt = st.columns([1,1])
@@ -289,15 +336,19 @@ elif selected_option == "DAX integrations for Drill-downs":
             "<span style='color: #FF4500;'>Performance:</span> Explicit measures can be optimized for better performance.<br>" +
             "<span style='color: #FF4500;'>Reusability:</span> Explicit measures can be reused across reports, ensuring consistency.",unsafe_allow_html=True)
     st.title("Using Implicit measures in Visualizations")
-    st.markdown(
-        "Implicit measures in Power BI are created automatically when you drag and drop fields into visualizations. These measures are typically straightforward aggregations of your data.<br><br>" +
+    st.markdown("""
+        <style>
+        .neonGreen {color: #39FF14;} /* Neon Green */
+        </style>
 
-        "<span style='color: #FF4500;'>Total Sales:</span> The sum of all sales transactions. This measure is automatically calculated when you drag the sales amount field into a visualization, summing up the total sales revenue.<br>" +
+        Implicit measures in Power BI are created automatically when you drag and drop fields into visualizations. These measures are typically straightforward aggregations of your data.<br><br>
 
-        "<span style='color: #FF4500;'>Total Orders:</span> The count of all orders. By dragging the order ID field into a visualization, Power BI can count the total number of orders placed within the selected timeframe.<br>" +
+        <span class='neonGreen'>Total Sales:</span> The sum of all sales transactions. This measure is automatically calculated when you drag the sales amount field into a visualization, summing up the total sales revenue.<br>
 
-        "<span style='color: #FF4500;'>Average Order Value (AOV):</span> The average value of sales transactions. When you drag the sales amount field into a visualization and set the aggregation to average, Power BI calculates the AOV.",
-        unsafe_allow_html=True)
+        <span class='neonGreen'>Total Orders:</span> The count of all orders. By dragging the order ID field into a visualization, Power BI can count the total number of orders placed within the selected timeframe.<br>
+
+        <span class='neonGreen'>Average Order Value (AOV):</span> The average value of sales transactions. When you drag the sales amount field into a visualization and set the aggregation to average, Power BI calculates the AOV.
+        """, unsafe_allow_html=True)
 
     st.title("Using Explicit Measures in Visualization")
     st.markdown("Explicit measures are created using DAX to define complex calculations. They offer flexibility and precision, tailored to specific analytical needs.",
