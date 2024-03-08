@@ -1,5 +1,5 @@
 import streamlit as st
-import os
+
 
 
 st.set_page_config(layout="wide",initial_sidebar_state="auto")
@@ -22,23 +22,6 @@ with open(filepath,"rb") as file:
         mime="application/pdf"
     )
 
-file_path = "datafiles"
-if os.path.exists(file_path):
-    # Open the file in binary read mode
-    with open(file_path, "rb") as file:
-        # Read the file's content
-        bytes_data = file.read()
-
-    # Create a download button and provide the file's content as bytes
-    st.sidebar.info("Download CSV to follow along ⬇️ ")
-    st.sidebar.download_button(
-        label="Download CSV Zip",
-        data=bytes_data,
-        file_name="adventure_works.zip",
-        mime="application/zip"
-    )
-else:
-    st.error("File not found. Please check the file path.")
 
 
 st.sidebar.info("Learn DAX in detail from Microsoft itself ⬇️ ")
