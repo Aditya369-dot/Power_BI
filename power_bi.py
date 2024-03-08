@@ -81,7 +81,7 @@ with col1:
         </style>
         """, unsafe_allow_html=True)
 
-    st.video('final.mp4')
+    st.video('images/final.mp4')
 
 st.header("🛠️➡️ Understanding the Architecture of Power BI and Fabric with Power Apps and Azure")
 st.info("Power BI stands out for its ability to connect effortlessly with a wide range of data sources, including CSV files, APIs,databases and much more. "
